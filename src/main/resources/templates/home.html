@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
+    <style>
+        .fig {
+            text-align: center; /* Выравнивание по центру */
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<p class="text-center">
+<form th:action="@{/login}" method="get">
+    <button>Log in</button>
+</form>
+</p>
+<p></p>
+<form th:action="@{/register}" method="get">
+    <button>Registration</button>
+</form>
+</body>
+</html>

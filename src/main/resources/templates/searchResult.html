@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+    <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
+</head>
+<body>
+
+
+<span th:text="${user1.getUsername()}"></span>
+<p></p>
+<span th:text="${user1.getName()}"></span>
+<span th:text="${user1.getSurname()}"></span>
+<p></p>
+
+
+<form th:action="@{/account/addFriend/__${user1.getUsername()}__}" th:method="post" id="validation-form">
+    <button type="submit">Add Friend</button>
+</form>
+<p></p>
+<form method="get" th:action="@{@{/account/getPublications/__${user1.getUsername()}__}}">
+    <button type="submit">Publications</button>
+</form>
+<p></p>
+<form method="get" th:action="@{@{/account/getSongs/__${user1.getUsername()}__}}">
+    <button type="submit">Songs</button>
+</form>
+<p></p>
+<form method="get" th:action="@{@{/account/getImages/__${user1.getUsername()}__}}">
+    <button type="submit">Images</button>
+</form>
+<p></p>
+<p></p>
+<form th:action="@{/account}" th:method="get" >
+    <button type="submit">My Page</button>
+</form>
+</body>
+</html>

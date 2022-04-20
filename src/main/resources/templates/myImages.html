@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>My Images</title>
+    <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
+</head>
+<body>
+
+
+
+<span th:text="${user.getUsername()}"></span>
+<p></p>
+<span th:text="${user.getName()}"></span>
+<span th:text="${user.getSurname()}"></span>
+<p></p>
+
+
+
+<th:block th:each="image : ${images}">
+    <img th:src="@{@{/img/__${image.getName}__}}"  width="300" height="400"/>
+    <form method="post" th:action="@{@{/account/deleteImage/__${image.getName}__}}"><button type="submit">Delete</button></form>
+</th:block>
+
+
+<p></p>
+<form th:action="@{/account}" th:method="get">
+    <button type="submit">My Page</button>
+</form>
+
+</body>
+</html>

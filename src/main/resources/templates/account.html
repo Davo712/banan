@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Page</title>
+    <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
+    <style>
+        #center {
+            text-align: center;
+        }
+
+        #right {
+            text-align: right;
+        }
+
+        .bottomleft {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            font-size: 18px;
+        }
+
+        .bottomleft1 {
+            position: absolute;
+            bottom: 40px;
+            left: 16px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<span th:text="${user.getUsername()}"></span>
+&ensp;
+<span th:text="${user.getName()}"></span>
+<span th:text="${user.getSurname()}"></span>
+&ensp;
+<span th:text="${user.getBalance()} + '$'"></span>
+<p></p>
+<p></p>
+<p></p>
+
+
+<form th:action="@{/account/searchUser}" method="get">
+    <input name="username" placeholder="Username">
+    <button class="button button4">Search</button>
+</form>
+<p></p>
+<span th:text="${message}"></span>
+<p></p>
+
+
+<th:block th:each="friendRequest : ${friendRequests}">
+    <li th:utext="${friendRequest}">..</li>
+    <form th:action="@{@{/account/acceptFriend/__${friendRequest}__}}" th:method="post">
+        <button type="submit">Accept</button>
+    </form>
+    <form th:action="@{@{/account/declineFriend/__${friendRequest}__}}" th:method="post">
+        <button type="submit">Decline</button>
+    </form>
+</th:block>
+
+
+<p></p>
+
+
+<form class="bottomleft" th:action="@{/logout}" method="post">
+    <button class="button button4">Sign Out</button>
+</form>
+<p></p>
+<form class="bottomleft1" th:action="@{/account/changePassword}" method="get">
+    <button type="submit">Change Password</button>
+</form>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+Friends
+<p></p>
+<th:block th:each="friendUsername : ${friendUsernames}">
+    <form th:action="@{@{/account/deleteFriend/__${friendUsername}__}}" th:method="get">
+        <a th:href="@{@{/account/searchUser/__${friendUsername}__}}">
+            <li th:utext="${friendUsername}">..</li>
+        </a>
+        <button type="submit">Delete</button>
+    </form>
+</th:block>
+
+<p></p>
+
+
+
+
+<p></p>
+
+<form id="center" method="post" th:action="@{/account/createPublication}">
+    <button type="submit">Make a publication</button>
+    <input type="text" placeholder="your text" name="message">
+    <p></p>
+</form>
+<p></p>
+<form id = "center" enctype="multipart/form-data" method="post" th:action="@{/account/addSong}">
+    <p><input type="file" name="f">
+        <input type="submit" value="Add Song"></p>
+</form>
+<p></p>
+<form id = "center" enctype="multipart/form-data" method="post" th:action="@{/account/addImage}">
+    <p><input type="file" name="f">
+        <input type="submit" value="Add Image"></p>
+</form>
+
+<p></p>
+<form id="center" method="get" th:action="@{@{/account/getPublications/my}}">
+    <button type="submit">My Publications</button>
+</form>
+<p></p>
+<form id="center" method="get" th:action="@{@{/account/getSongs/my}}">
+    <button type="submit">My Songs</button>
+</form>
+<p></p>
+<form id="center" method="get" th:action="@{@{/account/getImages/my}}">
+    <button type="submit">My Images</button>
+</form>
+
+</body>
+</html>

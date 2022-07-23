@@ -1,10 +1,14 @@
 package com.example.banan.service.impl;
 
+import com.example.banan.controller.MainController;
 import com.example.banan.model.Publication;
 import com.example.banan.model.User;
 import com.example.banan.repository.PublicationRepository;
 import com.example.banan.repository.UserRepository;
 import com.example.banan.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -28,6 +32,8 @@ public class UserServiceImpl implements UserService {
     private JavaMailSender emailSender;
     @Autowired
     public PublicationRepository publicationRepository;
+
+
 
 
     @Override

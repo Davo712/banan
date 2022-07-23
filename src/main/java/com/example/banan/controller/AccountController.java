@@ -1,8 +1,7 @@
 package com.example.banan.controller;
 
-import com.example.banan.model.Publication;
-import com.example.banan.model.Song;
-import com.example.banan.model.User;
+import com.example.banan.model.*;
+import com.example.banan.repository.ProductRepository;
 import com.example.banan.repository.PublicationRepository;
 import com.example.banan.repository.UserRepository;
 import com.example.banan.service.ImageService;
@@ -43,6 +42,8 @@ public class AccountController {
     public SongService songService;
     @Autowired
     public ImageService imageService;
+    @Autowired
+    public ProductRepository productRepository;
 
     @GetMapping("")
     public String getAccount(Principal principal,Model model) {
@@ -249,6 +250,48 @@ public class AccountController {
         return "redirect:/account/getImages/my";
     }
 
+    @GetMapping("/getAllProducts")
+    public String getAllProducts(Model model) {
+        List products = productRepository.findAll();
+        model.addAttribute("products",products);
+        return null;
+    }
+    @GetMapping("/getProducts/{username}")
+    public String getProducts(@PathVariable String username, Principal principal,Model model) {
+        User user = userRepository.findByUsername(username);
+        List products = user.getProducts();
+        model.addAttribute("products",products);
+        return null;
+
+    }
+    @GetMapping("/getProducts/my")
+    public String myProducts(Principal principal,Model model) throws IOException {
+        model.addAttribute("products",userRepository.findByUsername(principal.getName()).getProducts());
+        return null;
+    }
+    @PostMapping("/addProduct")
+    public String addProduct(Principal principal, Product product) {
+        User user = userRepository.findByUsername(principal.getName());
+        product.setSellerName(user.getUsername());
+        user.getProducts().add(product);
+        userRepository.save(user);
+        productRepository.save(product);
+        return null;
+    }
+    @PostMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable String id, Principal principal) {
+        User user = userRepository.findByUsername(principal.getName());
+        Long productId = Long.getLong(id);
+        List products = user.getProducts();
+        Product product = productRepository.getById(productId);
+        if (product != null) {
+            products.remove(product);
+            user.setProducts(products);
+            userRepository.save(user);
+            productRepository.delete(product);
+        }
+        return null;
+    }
 
     @ModelAttribute("user")
     public User attribute(Principal principal) {

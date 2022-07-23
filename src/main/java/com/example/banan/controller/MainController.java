@@ -3,6 +3,8 @@ package com.example.banan.controller;
 import com.example.banan.model.User;
 import com.example.banan.repository.UserRepository;
 import com.example.banan.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Principal;
 
 @Controller
@@ -24,8 +29,13 @@ public class MainController {
     @Autowired
     public UserService userService;
 
+    private static final Logger logger = LogManager.getLogger(MainController.class);
+
     @GetMapping("/")
     public String getHome() {
+
+        logger.info(" get home");
+        logger.warn("asasa");
 
         return "home";
     }
@@ -109,6 +119,10 @@ public class MainController {
             return "forgotPassword1";
         }
 
+    }
+
+    public static void main(String[] args) {
+       logger.info("assasa");
     }
 
 

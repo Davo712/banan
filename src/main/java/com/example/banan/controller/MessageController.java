@@ -3,6 +3,7 @@ package com.example.banan.controller;
 import com.example.banan.model.Message;
 import com.example.banan.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,12 @@ public class MessageController {
 
     @Autowired
     public MessageRepository messageRepository;
+
+    @GetMapping("/getMessages")
+    public ResponseEntity getMessages(Principal principal, Model model, @PathVariable String username) {
+        List<Message> messages = messageRepository.getMessages(principal.getName(),username);
+        return ResponseEntity.ok(messages);
+    }
 
 
     @GetMapping("/account/sendMessage/{username}")

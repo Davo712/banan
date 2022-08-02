@@ -302,15 +302,6 @@ public class AccountController {
         return "chat";
     }
 
-    @GetMapping("/sendMessage/{username}")
-    public String getSendMessagePage(Principal principal, Model model, @PathVariable String username) {
-        model.addAttribute("fromUsername",principal.getName());
-        model.addAttribute("toUsername",username);
-        List<Message> messages = messageRepository.getMessages(principal.getName(),username);
-        model.addAttribute("messages",messages);
-        return "sendMessagePage";
-    }
-
 
 
 

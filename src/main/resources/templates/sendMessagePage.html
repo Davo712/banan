@@ -13,8 +13,8 @@
     <span th:text="${message.messageText}"></span>&nbsp;&nbsp;&nbsp;&nbsp; from:<span th:text="${message.messageFrom}"></span><p></p>
 </th:block>
 
-<form style="text-align: center" method="post" th:action="@{/}">
-    <input type="text" placeholder="your message" name="message">
+<form style="text-align: center" method="post" th:action="@{/account/sendMessage/__${toUsername}__}">
+    <input type="text" placeholder="your message" name="messageText">
     <button type="submit">Send Message</button>
     <p></p>
 </form>

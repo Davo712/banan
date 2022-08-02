@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import javax.sql.DataSource;
 
@@ -25,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/forgotPassword1","/forgotPassword","/forgotPassword1/**","/forgotPassword1/*","/register","/activate/*").permitAll()
+                .antMatchers("/","/testt","/forgotPassword1","/forgotPassword","/forgotPassword1/**","/forgotPassword1/*","/register","/activate/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().defaultSuccessUrl("/account",true)
@@ -56,8 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
 
                 // статика
-                "/css/**",
-                "/js/**",
+                "/static/css/**",
+                "/static/js/**",
                 "/fonts/**",
                 "/images/**"
         );

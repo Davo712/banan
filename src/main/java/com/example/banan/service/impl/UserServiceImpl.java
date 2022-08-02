@@ -1,6 +1,7 @@
 package com.example.banan.service.impl;
 
 import com.example.banan.model.Publication;
+import com.example.banan.model.Role;
 import com.example.banan.model.User;
 import com.example.banan.repository.PublicationRepository;
 import com.example.banan.repository.UserRepository;
@@ -37,9 +38,11 @@ public class UserServiceImpl implements UserService {
         if (user1 != null) {
             return false;
         }
+
         user.setActive(false);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActivationCode(UUID.randomUUID().toString());
+        user.setRole(Role.USER);
         while (userRepository.findByActivationCode(user.getActivationCode()) != null) {
             user.setActivationCode(UUID.randomUUID().toString());
         }

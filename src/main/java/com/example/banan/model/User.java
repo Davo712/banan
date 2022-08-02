@@ -1,7 +1,11 @@
 package com.example.banan.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CollectionId;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -9,7 +13,29 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 public class User {
+
+    public User() {
+    }
+
+    public User(long id, String username, String password, String name, String surname, boolean active, String activationCode, long balance, Role role, List<String> friendRequests, List<String> friendUsernames, List<Publication> publications, List<Song> songs, List<Image> images) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.active = active;
+        this.activationCode = activationCode;
+        this.balance = balance;
+        this.role = role;
+        this.friendRequests = friendRequests;
+        this.friendUsernames = friendUsernames;
+        this.publications = publications;
+        this.songs = songs;
+        this.images = images;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,6 +46,7 @@ public class User {
     private boolean active;
     private String activationCode;
     private long balance;
+    private Role role;
     @ElementCollection
     private List<String> friendRequests;
     @ElementCollection

@@ -4,14 +4,17 @@ import com.example.banan.model.User;
 import com.example.banan.repository.UserRepository;
 import com.example.banan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
+import java.util.logging.Logger;
 
 @Controller
 public class MainController {
@@ -23,10 +26,11 @@ public class MainController {
     public UserRepository userRepository;
     @Autowired
     public UserService userService;
+    private static Logger log = Logger.getLogger(MainController.class.getName());
+
 
     @GetMapping("/")
     public String getHome() {
-
         return "home";
     }
 
@@ -109,6 +113,12 @@ public class MainController {
             return "forgotPassword1";
         }
 
+    }
+
+    @PostMapping("/testt")
+    public ResponseEntity<?> testt(@RequestBody User user) {
+        System.out.println("sasa");
+        return ResponseEntity.ok().body(user);
     }
 
 

@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BananApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BananApplication.class, args);}
+        SpringApplication.run(BananApplication.class, args);
+    }
 
 }

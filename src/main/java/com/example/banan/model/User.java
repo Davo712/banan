@@ -57,6 +57,8 @@ public class User {
     private List<Song> songs;
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<Image> images;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    private List<Product> products;
 
 
 }

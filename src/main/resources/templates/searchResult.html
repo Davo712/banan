@@ -32,7 +32,14 @@
     <button type="submit">Images</button>
 </form>
 <p></p>
+<form method="get" th:action="@{@{/account/sendMessage/__${user1.getUsername()}__}}">
+    <button type="submit">Send Message</button>
+</form>
 <p></p>
+<p></p>
+<br>
+<br>
+<br>
 <form th:action="@{/account}" th:method="get" >
     <button type="submit">My Page</button>
 </form>

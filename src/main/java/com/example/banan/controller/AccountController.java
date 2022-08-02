@@ -1,6 +1,7 @@
 package com.example.banan.controller;
 
 import com.example.banan.model.*;
+import com.example.banan.repository.MessageRepository;
 import com.example.banan.repository.ProductRepository;
 import com.example.banan.repository.PublicationRepository;
 import com.example.banan.repository.UserRepository;
@@ -44,6 +45,8 @@ public class AccountController {
     public ImageService imageService;
     @Autowired
     public ProductRepository productRepository;
+    @Autowired
+    public MessageRepository messageRepository;
 
     @GetMapping("")
     public String getAccount(Principal principal,Model model) {
@@ -292,6 +295,25 @@ public class AccountController {
         }
         return null;
     }
+
+    @GetMapping("/chat")
+    public String getChat(Principal principal, Model model) {
+        model.addAttribute("username",principal.getName());
+        return "chat";
+    }
+
+    @GetMapping("/sendMessage/{username}")
+    public String getSendMessagePage(Principal principal, Model model, @PathVariable String username) {
+        model.addAttribute("fromUsername",principal.getName());
+        model.addAttribute("toUsername",username);
+        List<Message> messages = messageRepository.getMessages(principal.getName(),username);
+        model.addAttribute("messages",messages);
+        return "sendMessagePage";
+    }
+
+
+
+
 
     @ModelAttribute("user")
     public User attribute(Principal principal) {

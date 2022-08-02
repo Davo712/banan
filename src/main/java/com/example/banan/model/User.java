@@ -1,19 +1,12 @@
 package com.example.banan.model;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.CollectionId;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @Data
-@Builder
 public class User {
 
     public User() {

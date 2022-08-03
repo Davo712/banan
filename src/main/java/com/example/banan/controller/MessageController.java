@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,14 @@ public class MessageController {
     public User globalUser;
 
 
+
+    @GetMapping("/getMessages/{username}")
+    public ResponseEntity test(Principal principal,@PathVariable String username) {
+        List<Message> messages = messageRepository.getMessages(principal.getName(), username);
+        return ResponseEntity.ok(messages);
+    }
+
+
     @GetMapping("/account/sendMessage/{username}")
     public String getSendMessagePage(Principal principal, Model model, @PathVariable String username) {
         if (principal.getName().equals(username)) {
@@ -41,9 +50,7 @@ public class MessageController {
         }
         model.addAttribute("fromUsername", principal.getName());
         model.addAttribute("toUsername", username);
-        List<Message> messages = messageRepository.getMessages(principal.getName(), username);
-        model.addAttribute("messages", messages);
-        return "sendMessagePage";
+        return "message";
     }
 
     @PostMapping("/account/sendMessage/{username}")
@@ -70,12 +77,18 @@ public class MessageController {
     }
 
     @ModelAttribute("friendRequests")
-    public List<String> atribute2(Principal principal) {
-        return globalUser.getFriendRequests();
+    public List<String> atribute2() {
+        if (globalUser.getFriendRequests() != null) {
+            return globalUser.getFriendRequests();
+        }
+        return new ArrayList<>();
     }
 
     @ModelAttribute("friendUsernames")
-    public List<String> atribute3(Principal principal) {
-        return globalUser.getFriendUsernames();
+    public List<String> atribute3() {
+        if (globalUser.getFriendUsernames() != null) {
+            return globalUser.getFriendUsernames();
+        }
+        return new ArrayList<>();
     }
 }

@@ -6,24 +6,63 @@
     <title>Home</title>
     <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
     <style>
-        .fig {
-            text-align: center; /* Выравнивание по центру */
-        }
+      body {
+          background: #128ff2;
+          font-family: "Arial LatArm"
+      }
+      .btn1 {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 60%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+
+      }
+      .btn2 {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 40%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+      }
+      .button {
+          background-color: #f8f304;
+          border: none;
+          color: #000000;
+          padding: 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 12px;
+      }
+      .dv {
+          color: #f8f304;
+          text-align: center;
+          font-size: 50px;
+      }
+
     </style>
 </head>
 
 <body>
 
-
+<div class="dv">
+    <h1>Banan Web Site</h1>
+</div>
 
 <p class="text-center">
 <form th:action="@{/login}" method="get">
-    <button>Log in</button>
+    <button class="btn1 button">Log in</button>
 </form>
 </p>
 <p></p>
 <form th:action="@{/register}" method="get">
-    <button>Registration</button>
+    <button class="btn2 button">Registration</button>
 </form>
 </body>
 </html>

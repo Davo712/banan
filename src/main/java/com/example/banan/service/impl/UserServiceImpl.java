@@ -104,6 +104,7 @@ public class UserServiceImpl implements UserService {
                 message.setTo(user.getUsername());
                 message.setSubject("Forgot Password");
                 String message1 = String.format("Please visit next link for change password:  http://localhost:8080/forgotPassword1/%s",user.getActivationCode());
+                System.out.println(message1);
                 message.setText(message1);
                 emailSender.send(message);
             }

@@ -51,6 +51,16 @@ public class AccountController {
 
     public User globalUser = new User();
 
+    final String SUCCESS = "Successfully";
+    final String OLD_PASS_WRONG = "Old password is wrong";
+    final String USER_NOT_FOUND = "User not found";
+    final String FRIEND_RQ_SENT = "Friend request sent";
+    final String ERROR = "Error";
+    final String PUBLICATION_CREATED = "Publication created";
+    final String USER_NOT_FRIEND = "The user is not your friend";
+    final String SONG_ADDED = "Song added in your list";
+    final String IMAGE_ADDED = "Image added in your list";
+
 
     @GetMapping("")
     public String getAccount(Principal principal, Model model) {
@@ -67,10 +77,10 @@ public class AccountController {
     public String changePassword(Model model, Principal principal, String newPassword, String oldPassword) {
         User user = userRepository.findByUsername(principal.getName());
         if (userService.changePassword(newPassword, oldPassword, user)) {
-            model.addAttribute("message", "successfully");
+            model.addAttribute("message", SUCCESS);
             return "changePassword";
         }
-        model.addAttribute("message", "old password is wrong");
+        model.addAttribute("message", OLD_PASS_WRONG);
         return "changePassword";
     }
 
@@ -82,7 +92,7 @@ public class AccountController {
 
         User user = userService.searchUser(username);
         if (user == null || !user.isActive()) {
-            model.addAttribute("message", "user not found");
+            model.addAttribute("message", USER_NOT_FOUND);
             return "account";
         }
         model.addAttribute("user1", user);
@@ -102,10 +112,10 @@ public class AccountController {
             return "account";
         }
         if (userService.addFreindRequest(username, principal.getName())) {
-            model.addAttribute("message", "friend request sent");
+            model.addAttribute("message", FRIEND_RQ_SENT);
             return "account";
         }
-        model.addAttribute("message", "error");
+        model.addAttribute("message", ERROR);
         return "account";
     }
 
@@ -124,7 +134,6 @@ public class AccountController {
 
     @GetMapping("/deleteFriend/{username}")
     public String deleteFriend(@PathVariable String username, Principal principal) {
-        System.out.println("deleted");
         userService.deleteFriend(principal.getName(), username);
         return "account";
     }
@@ -133,7 +142,7 @@ public class AccountController {
     public String createPublication(Principal principal, Model model, String message) {
         User user = userRepository.findByUsername(principal.getName());
         userService.createPublication(message, user);
-        model.addAttribute("message", "publication created");
+        model.addAttribute("message", PUBLICATION_CREATED);
         return "account";
     }
 
@@ -150,7 +159,7 @@ public class AccountController {
             model.addAttribute("user1", user);
             return "publications";
         } else {
-            model.addAttribute("message", "the user is not your friend");
+            model.addAttribute("message", USER_NOT_FRIEND);
             return "account";
         }
     }
@@ -172,10 +181,10 @@ public class AccountController {
     @PostMapping("/addSong")
     public String addSong(@RequestParam("f") MultipartFile f, Model model, Principal principal) throws IOException {
         if (songService.addSong(f, principal.getName())) {
-            model.addAttribute("message", "Song added in your list");
+            model.addAttribute("message", SONG_ADDED);
             return "account";
         } else {
-            model.addAttribute("message", "error");
+            model.addAttribute("message", ERROR);
         }
 
         return "account";
@@ -198,7 +207,7 @@ public class AccountController {
             model.addAttribute("user1", user);
             return "songs";
         } else {
-            model.addAttribute("message", "the user is not your friend");
+            model.addAttribute("message", USER_NOT_FRIEND);
             return "account";
         }
     }
@@ -218,10 +227,10 @@ public class AccountController {
             return "account";
         }
         if (imageService.addImage(f, principal.getName())) {
-            model.addAttribute("message", "Image added in your list");
+            model.addAttribute("message", IMAGE_ADDED);
             return "account";
         } else {
-            model.addAttribute("message", "error");
+            model.addAttribute("message", ERROR);
         }
         return "account";
     }
@@ -245,7 +254,7 @@ public class AccountController {
             model.addAttribute("user1", user);
             return "images";
         } else {
-            model.addAttribute("message", "the user is not your friend");
+            model.addAttribute("message", USER_NOT_FRIEND);
             return "account";
         }
     }

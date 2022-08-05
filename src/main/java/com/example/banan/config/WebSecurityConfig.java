@@ -24,10 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/forgotPassword1","/forgotPassword","/forgotPassword1/**","/forgotPassword1/*","/register","/activate/*").permitAll()
+                .antMatchers("/", "/forgotPassword1", "/forgotPassword", "/forgotPassword1/**", "/forgotPassword1/*", "/register", "/activate/*","/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().defaultSuccessUrl("/account",true)
+                .formLogin().defaultSuccessUrl("/account", true)
                 .loginPage("/login")
                 .permitAll()
                 .and()
@@ -58,9 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/static/css/**",
                 "/static/js/**",
                 "/fonts/**",
-                "/images/**"
+                "/static/img/**",
+                "img/**"
         );
     }
+
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();

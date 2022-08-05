@@ -1,68 +1,151 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
+    <title>Banan Web Site</title>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="shortcut icon" href="images/banan.png" type="image/x-icon">
-    <style>
-      body {
-          background: #128ff2;
-          font-family: "Arial LatArm"
-      }
-      .btn1 {
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left: 60%;
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" th:href="@{/img/ban.jpg}" />
 
-      }
-      .btn2 {
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left: 40%;
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-      }
-      .button {
-          background-color: #f8f304;
-          border: none;
-          color: #000000;
-          padding: 20px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-          border-radius: 12px;
-      }
-      .dv {
-          color: #f8f304;
-          text-align: center;
-          font-size: 50px;
-      }
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Lato", sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            color: #777;
+            line-height: 1.8;
+        }
+
+
+        .w3-wide {
+            letter-spacing: 10px;
+        }
+
+        .w3-hover-opacity {
+            cursor: pointer;
+        }
+
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1600px) {
+            .bgimg-1, .bgimg-2, .bgimg-3 {
+                background-attachment: scroll;
+                min-height: 400px;
+            }
+        }
+
+        .site-name {
+            display: flex;
+            justify-content: space-around;
+            padding: 70px;
+        }
+
+        .w3-padding-64 {
+            padding-top: 100px !important;
+        }
+        .banan-logo{
+            margin-top: -35px;
+        }
+       .w3-black{
+           background-color: #f8f304 !important;
+           color: #3A3A3A !important;
+       }
 
     </style>
 </head>
-
 <body>
 
-<div class="dv">
-    <h1>Banan Web Site</h1>
+<!-- Navbar (sit on top) -->
+<div style="background: #f8f304;" class="w3-top">
+    <div class="w3-bar" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);"
+           onclick="toggleFunction()" title="Toggle Navigation Menu">
+            <i class="fa fa-bars"></i>
+        </a>
+        <a th:href="@{/}" class="w3-bar-item w3-button">HOME</a>
+        <a th:href="@{/login}" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-sign-in"></i> SIGN IN</a>
+        <a th:href="@{/register}" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-registered"></i> SIGN UP</a>
+    </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+        <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">SIGN IN</a>
+        <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">SIGN UP</a>
+    </div>
 </div>
 
-<p class="text-center">
-<form th:action="@{/login}" method="get">
-    <button class="btn1 button">Log in</button>
-</form>
-</p>
-<p></p>
-<form th:action="@{/register}" method="get">
-    <button class="btn2 button">Registration</button>
-</form>
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+
+
+
+    <div class="site-name w3-display-container w3-opacity-min">
+        <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Banan Web Site</span>
+    </div>
+
+
+    <h3 class="w3-center">ABOUT SITE</h3>
+
+    <p>Our site is a social network that was developed by one person in 2022, after registration you can chat with your friends, write them a message, share photos and songs. The site is intended for everyone who just wants to have a good time with us.</p>
+    <div class="w3-row">
+        <div class="w3-col m6 w3-center w3-padding-large">
+            <div class="banan-logo">
+                <img th:src="@{/img/banana.jpg}" class="w3-round w3-image w3-opacity w3-hover-opacity-off">
+            </div>
+        </div>
+
+        <!-- Hide this text on small devices -->
+        <div class="w3-col m6 w3-hide-small w3-padding-large">
+            <p>Welcome to my website. <p></p> Rules: To write a message, view photos, publications and listen to songs, you must add the user as a friend. Do not try to deceive people with this site, you will be immediately blocked.</p>
+            <br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-on">
+    <div  class="w3-xlarge w3-section">
+        <p>© 2022 Banan Web Site <p></p>All rights reserved</p>
+    </div>
+</footer>
+<script>
+
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+    // Change style of navbar on scroll
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        var navbar = document.getElementById("myNavbar");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+        } else {
+            navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+        }
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function toggleFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+</script>
+
 </body>
 </html>

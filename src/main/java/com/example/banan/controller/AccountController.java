@@ -9,7 +9,6 @@ import com.example.banan.service.ImageService;
 import com.example.banan.service.PublicationService;
 import com.example.banan.service.SongService;
 import com.example.banan.service.UserService;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.*;
@@ -61,7 +59,7 @@ public class AccountController {
 
     @GetMapping("")
     public String getAccount(Principal principal, Model model) {
-        return "test";
+        return "account";
     }
 
 
@@ -140,7 +138,7 @@ public class AccountController {
         User user = userRepository.findByUsername(principal.getName());
         userService.createPublication(message, user);
         model.addAttribute("message", PUBLICATION_CREATED);
-        return "test";
+        return "redirect:/account";
     }
 
     @GetMapping("/getPublications/{username}")
@@ -164,7 +162,7 @@ public class AccountController {
     @GetMapping("/getPublications/my")
     public String myPublications(Principal principal, Model model) {
         model.addAttribute("publications", userRepository.findByUsername(principal.getName()).getPublications());
-        return "test";
+        return "account";
     }
 
     @PostMapping("/deletePublication/{id}")
@@ -176,20 +174,21 @@ public class AccountController {
     }
 
     @PostMapping("/addSong")
-    public String addSong(@RequestParam("f") MultipartFile f, Model model, Principal principal) throws IOException {
-        if (songService.addSong(f, principal.getName())) {
+    public String addSong(@RequestParam("f") MultipartFile f, Model model, Principal principal,String nameByUser) throws IOException {
+        if (songService.addSong(f, principal.getName(),nameByUser)) {
             model.addAttribute("message", SONG_ADDED);
-            return "account";
+            return "redirect:/account/getSongs/my";
         } else {
             model.addAttribute("message", ERROR);
         }
-
-        return "account";
+        return "redirect:/account/getSongs/my";
     }
 
     @GetMapping("/getSongs/my")
     public String mySongs(Principal principal, Model model) throws IOException {
-        model.addAttribute("songs", songService.getSongs(principal.getName()));
+        List<Song> songs = songService.getSongs(principal.getName());
+        Collections.reverse(songs);
+        model.addAttribute("songs", songs);
         return "mySongs";
     }
 

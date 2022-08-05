@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public interface SongService {
-    boolean addSong(MultipartFile f, String username) throws IOException;
+    boolean addSong(MultipartFile f, String username, String nameByUser) throws IOException;
     List<Song> getSongs(String username) throws IOException;
     void deleteSong(String name,String username);
 }

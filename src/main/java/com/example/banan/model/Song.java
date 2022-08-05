@@ -16,4 +16,5 @@ public class Song {
     private long id;
     private String name;
     private String link;
+    private String nameByUser;
 }

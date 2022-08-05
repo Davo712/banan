@@ -11,9 +11,7 @@ import java.util.Base64;
 public class UtilService {
 
     public String getEncode(File file) throws IOException {
-
         String encodedString = Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(file));
-
         return encodedString;
 
     }

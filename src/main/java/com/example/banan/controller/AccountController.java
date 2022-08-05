@@ -21,10 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/account")
@@ -64,7 +61,7 @@ public class AccountController {
 
     @GetMapping("")
     public String getAccount(Principal principal, Model model) {
-        return "account";
+        return "test";
     }
 
 
@@ -143,7 +140,7 @@ public class AccountController {
         User user = userRepository.findByUsername(principal.getName());
         userService.createPublication(message, user);
         model.addAttribute("message", PUBLICATION_CREATED);
-        return "account";
+        return "test";
     }
 
     @GetMapping("/getPublications/{username}")
@@ -167,7 +164,7 @@ public class AccountController {
     @GetMapping("/getPublications/my")
     public String myPublications(Principal principal, Model model) {
         model.addAttribute("publications", userRepository.findByUsername(principal.getName()).getPublications());
-        return "myPublications";
+        return "test";
     }
 
     @PostMapping("/deletePublication/{id}")
@@ -295,6 +292,12 @@ public class AccountController {
             return globalUser.getFriendUsernames();
         }
         return new ArrayList<>();
+    }
+    @ModelAttribute("publications")
+    public List<Publication> atribute4() {
+        List<Publication> publications = globalUser.getPublications();
+        publications.sort((o1, o2) -> o2.getDate().compareTo(o1.getDate()));
+       return publications;
     }
 
 

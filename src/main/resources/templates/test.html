@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" th:href="@{/img/ban.jpg}" />
+    <link rel="icon" type="image/png" th:href="@{/img/ban.jpg}"/>
 
     <title>Title</title>
     <style>
-        body{
-            margin-top:20px;
-            background:#eee;
+        body {
+            margin-top: 20px;
+            background: #eee;
         }
 
         .profile-header {
@@ -17,7 +17,7 @@
         }
 
         .profile-header .profile-header-cover {
-            background-image: url(https://bootdey.com/img/Content/bg1.jpg);
+            background: #f8f304;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -65,7 +65,7 @@
             color: #fff
         }
 
-        .profile-header-img+.profile-header-info {
+        .profile-header-img + .profile-header-info {
             margin-left: 140px
         }
 
@@ -153,7 +153,7 @@
         .t-plus-7,
         .t-plus-8,
         .t-plus-9 {
-            position: relative!important
+            position: relative !important
         }
 
         .profile-header .profile-header-tab {
@@ -167,15 +167,15 @@
 
         .text-ellipsis,
         .text-nowrap {
-            white-space: nowrap!important
+            white-space: nowrap !important
         }
 
-        .profile-header .profile-header-tab>li {
+        .profile-header .profile-header-tab > li {
             display: inline-block;
             margin: 0
         }
 
-        .profile-header .profile-header-tab>li>a {
+        .profile-header .profile-header-tab > li > a {
             display: block;
             color: #929ba1;
             line-height: 20px;
@@ -186,8 +186,8 @@
             border: none
         }
 
-        .profile-header .profile-header-tab>li.active>a,
-        .profile-header .profile-header-tab>li>a.active {
+        .profile-header .profile-header-tab > li.active > a,
+        .profile-header .profile-header-tab > li > a.active {
             color: #242a30
         }
 
@@ -246,24 +246,24 @@
             font-weight: 700
         }
 
-        .table.table-profile>thead>tr>th {
-            border-bottom: none!important
+        .table.table-profile > thead > tr > th {
+            border-bottom: none !important
         }
 
-        .table.table-profile>thead>tr>th h4 {
+        .table.table-profile > thead > tr > th h4 {
             font-size: 20px;
             margin-top: 0
         }
 
-        .table.table-profile>thead>tr>th h4 small {
+        .table.table-profile > thead > tr > th h4 small {
             display: block;
             font-size: 12px;
             font-weight: 400;
             margin-top: 5px
         }
 
-        .table.table-profile>tbody>tr>td,
-        .table.table-profile>thead>tr>th {
+        .table.table-profile > tbody > tr > td,
+        .table.table-profile > thead > tr > th {
             border: none;
             padding-top: 7px;
             padding-bottom: 7px;
@@ -271,24 +271,24 @@
             background: 0 0
         }
 
-        .table.table-profile>tbody>tr>td.field {
+        .table.table-profile > tbody > tr > td.field {
             width: 20%;
             text-align: right;
             font-weight: 600;
             color: #2d353c
         }
 
-        .table.table-profile>tbody>tr.highlight>td {
+        .table.table-profile > tbody > tr.highlight > td {
             border-top: 1px solid #b9c3ca;
             border-bottom: 1px solid #b9c3ca
         }
 
-        .table.table-profile>tbody>tr.divider>td {
-            padding: 0!important;
+        .table.table-profile > tbody > tr.divider > td {
+            padding: 0 !important;
             height: 10px
         }
 
-        .profile-section+.profile-section {
+        .profile-section + .profile-section {
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #b9c3ca
@@ -333,86 +333,93 @@
             background: #fff
         }
 
-        .flat-black .sidebar .nav>li>a {
+        .flat-black .sidebar .nav > li > a {
             color: #b2b2b2
         }
 
-        .flat-black .sidebar.sidebar-grid .nav>li>a {
+        .flat-black .sidebar.sidebar-grid .nav > li > a {
             border-bottom: 1px solid #474747;
             border-top: 1px solid #474747
         }
 
-        .flat-black .sidebar .active .sub-menu>li.active>a,
-        .flat-black .sidebar .nav>li.active>a,
-        .flat-black .sidebar .nav>li>a:focus,
-        .flat-black .sidebar .nav>li>a:hover,
-        .flat-black .sidebar .sub-menu>li>a:focus,
-        .flat-black .sidebar .sub-menu>li>a:hover,
-        .sidebar .nav>li.nav-profile>a {
+        .flat-black .sidebar .active .sub-menu > li.active > a,
+        .flat-black .sidebar .nav > li.active > a,
+        .flat-black .sidebar .nav > li > a:focus,
+        .flat-black .sidebar .nav > li > a:hover,
+        .flat-black .sidebar .sub-menu > li > a:focus,
+        .flat-black .sidebar .sub-menu > li > a:hover,
+        .sidebar .nav > li.nav-profile > a {
             color: #fff
         }
 
-        .flat-black .sidebar .sub-menu>li>a,
-        .flat-black .sidebar .sub-menu>li>a:before {
+        .flat-black .sidebar .sub-menu > li > a,
+        .flat-black .sidebar .sub-menu > li > a:before {
             color: #999
         }
 
-        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a,
-        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a:focus,
-        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a:hover,
-        .flat-black .page-with-light-sidebar .sidebar .nav>li.active>a,
-        .flat-black .page-with-light-sidebar .sidebar .nav>li.active>a:focus,
-        .flat-black .page-with-light-sidebar .sidebar .nav>li.active>a:hover {
+        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu > li.active > a,
+        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu > li.active > a:focus,
+        .flat-black .page-with-light-sidebar .sidebar .active .sub-menu > li.active > a:hover,
+        .flat-black .page-with-light-sidebar .sidebar .nav > li.active > a,
+        .flat-black .page-with-light-sidebar .sidebar .nav > li.active > a:focus,
+        .flat-black .page-with-light-sidebar .sidebar .nav > li.active > a:hover {
             color: #000
         }
 
-        .flat-black .page-sidebar-minified .sidebar .nav>li.has-sub:focus>a,
-        .flat-black .page-sidebar-minified .sidebar .nav>li.has-sub:hover>a {
+        .flat-black .page-sidebar-minified .sidebar .nav > li.has-sub:focus > a,
+        .flat-black .page-sidebar-minified .sidebar .nav > li.has-sub:hover > a {
             background: #323232
         }
 
-        .flat-black .page-sidebar-minified .sidebar .nav li.has-sub>.sub-menu,
-        .flat-black .sidebar .nav>li.active>a,
-        .flat-black .sidebar .nav>li.active>a:focus,
-        .flat-black .sidebar .nav>li.active>a:hover,
-        .flat-black .sidebar .nav>li.nav-profile,
-        .flat-black .sidebar .sub-menu>li.has-sub>a:before,
-        .flat-black .sidebar .sub-menu>li:before,
-        .flat-black .sidebar .sub-menu>li>a:after {
+        .flat-black .page-sidebar-minified .sidebar .nav li.has-sub > .sub-menu,
+        .flat-black .sidebar .nav > li.active > a,
+        .flat-black .sidebar .nav > li.active > a:focus,
+        .flat-black .sidebar .nav > li.active > a:hover,
+        .flat-black .sidebar .nav > li.nav-profile,
+        .flat-black .sidebar .sub-menu > li.has-sub > a:before,
+        .flat-black .sidebar .sub-menu > li:before,
+        .flat-black .sidebar .sub-menu > li > a:after {
             background: #2A2A2A
         }
 
-        .flat-black .page-sidebar-minified .sidebar .sub-menu>li:before,
-        .flat-black .page-sidebar-minified .sidebar .sub-menu>li>a:after {
+        .flat-black .page-sidebar-minified .sidebar .sub-menu > li:before,
+        .flat-black .page-sidebar-minified .sidebar .sub-menu > li > a:after {
             background: #3e3e3e
         }
 
-        .flat-black .sidebar .nav>li.nav-profile .cover.with-shadow:before {
+        .flat-black .sidebar .nav > li.nav-profile .cover.with-shadow:before {
             background: rgba(42, 42, 42, .75)
         }
 
         .bg-white {
-            background-color: #fff!important;
+            background-color: #fff !important;
         }
+
         .p-10 {
-            padding: 10px!important;
+            padding: 10px !important;
         }
+
         .media.media-xs .media-object {
             width: 32px;
         }
+
         .m-b-2 {
-            margin-bottom: 2px!important;
+            margin-bottom: 2px !important;
         }
-        .media>.media-left, .media>.pull-left {
+
+        .media > .media-left, .media > .pull-left {
             padding-right: 15px;
         }
+
         .media-body, .media-left, .media-right {
             display: table-cell;
             vertical-align: top;
         }
+
         select.form-control:not([size]):not([multiple]) {
             height: 34px;
         }
+
         .form-control.input-inline {
             display: inline;
             width: auto;
@@ -438,7 +445,7 @@
             margin-left: -2.5px
         }
 
-        .timeline>li {
+        .timeline > li {
             position: relative;
             min-height: 50px;
             padding: 20px 0
@@ -510,11 +517,11 @@
             top: 20px
         }
 
-        .timeline .timeline-body>div+div {
+        .timeline .timeline-body > div + div {
             margin-top: 15px
         }
 
-        .timeline .timeline-body>div+div:last-child {
+        .timeline .timeline-body > div + div:last-child {
             margin-bottom: -20px;
             padding-bottom: 20px;
             border-radius: 0 0 6px 6px
@@ -603,7 +610,7 @@
             font-size: 9px
         }
 
-        .timeline-likes .stats-icon+.stats-icon {
+        .timeline-likes .stats-icon + .stats-icon {
             margin-left: -2px
         }
 
@@ -611,7 +618,7 @@
             line-height: 20px
         }
 
-        .timeline-likes .stats-text+.stats-text {
+        .timeline-likes .stats-text + .stats-text {
             margin-left: 15px
         }
 
@@ -635,7 +642,7 @@
             max-height: 100%
         }
 
-        .timeline-comment-box .user+.input {
+        .timeline-comment-box .user + .input {
             margin-left: 44px
         }
 
@@ -647,8 +654,70 @@
         }
 
         .text-danger, .text-red {
-            color: #ff5b57!important;
+            color: #ff5b57 !important;
         }
+
+        .add-publication {
+            background-color: #eee;
+            width: 100%;
+            height: 150px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 49px !important;
+        }
+
+        .mt-25 {
+            margin-top: 25px;
+        }
+
+        .input-public {
+            background-color: #ffffff;
+            width: 50%;
+            height: 170px;
+            margin-left: 80px;
+            border-radius: 6px;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #56baed;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-delete {
+            width: 100%;
+            background-color: #56baed;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-input {
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .profile-header-content {
+            background-color: #f8f304 !important;
+        }
+
     </style>
 </head>
 <body>
@@ -668,12 +737,17 @@
                         <div class="profile-header-content">
                             <!-- BEGIN profile-header-img -->
                             <div class="profile-header-img">
+                                <img th:src="@{/img/banana.jpg}">
+
                             </div>
                             <!-- END profile-header-img -->
                             <!-- BEGIN profile-header-info -->
                             <div class="profile-header-info">
-                                <h4 class="m-t-10 m-b-5">Name Surname</h4>
-                                <p class="m-b-10">Banan Web Site User</p>
+                                <h4 class="m-t-10 m-b-5"><span th:text="${user.getName()}"
+                                                               style="color: #0d0d0d"></span>
+                                    <span th:text="${user.getSurname()}" style="color: #0d0d0d"></span></h4>
+                                <p class="m-b-10"><span th:text="${user.getUsername()}" style="color: #0d0d0d"></span>
+                                </p>
                                 <a href="#" style="color: #128ff2" class="btn btn-sm btn-info mb-2">Change Password</a>&ensp;/&ensp;
                                 <a href="#" style="color: #128ff2" class="btn btn-sm btn-info mb-2">Log Out</a>
                             </div>
@@ -682,11 +756,17 @@
                         <!-- END profile-header-content -->
                         <!-- BEGIN profile-header-tab -->
                         <ul class="profile-header-tab nav nav-tabs">
-                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts" target="__blank" class="nav-link_ active">POSTS</a></li>
-                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">SONGS</a></li>
-                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" class="nav-link_">PHOTOS</a></li>
-                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list" target="__blank" class="nav-link_">FRIENDS</a></li>
-                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list" target="__blank" class="nav-link_">FRIEND REQUESTS</a></li>
+                            <li class="nav-item"><a
+                                    href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts"
+                                    target="__blank" class="nav-link_ active">POSTS</a></li>
+                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-about"
+                                                    target="__blank" class="nav-link_">SONGS</a></li>
+                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-photos"
+                                                    target="__blank" class="nav-link_">PHOTOS</a></li>
+                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list"
+                                                    target="__blank" class="nav-link_">FRIENDS</a></li>
+                            <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list"
+                                                    target="__blank" class="nav-link_">FRIEND REQUESTS</a></li>
 
                         </ul>
                         <!-- END profile-header-tab -->
@@ -694,201 +774,104 @@
                 </div>
                 <!-- end profile -->
                 <!-- begin profile-content -->
-                <div class="profile-content">
-                    <!-- begin tab-content -->
-                    <div class="tab-content p-0">
-                        <!-- begin #profile-post tab -->
-                        <div class="tab-pane fade active show" id="profile-post">
-                            <!-- begin timeline -->
-                            <ul class="timeline">
-                                <li>
-                                    <!-- begin timeline-time -->
-                                    <div class="timeline-time">
-                                        <span class="date">today</span>
-                                        <span class="time">04:20</span>
-                                    </div>
-                                    <!-- end timeline-time -->
-                                    <!-- begin timeline-icon -->
-                                    <div class="timeline-icon">
-                                        <a href="javascript:;">&nbsp;</a>
-                                    </div>
-                                    <!-- end timeline-icon -->
-                                    <!-- begin timeline-body -->
-                                    <div class="timeline-body">
-                                        <div class="timeline-header">
-                                            <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></span>
-                                            <span class="username"><a href="javascript:;">Sean Ngu</a> <small></small></span>
-                                            <span class="pull-right text-muted">18 Views</span>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis quis tincidunt luctus.
-                                                Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
-                                            </p>
-                                        </div>
-                                        <div class="timeline-likes">
-                                            <div class="stats-right">
-                                                <span class="stats-text">259 Shares</span>
-                                                <span class="stats-text">21 Comments</span>
-                                            </div>
-                                            <div class="stats">
-                                    <span class="fa-stack fa-fw stats-icon">
-                                    <i class="fa fa-circle fa-stack-2x text-danger"></i>
-                                    <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
-                                    </span>
-                                                <span class="fa-stack fa-fw stats-icon">
-                                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                    <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                                <span class="stats-total">4.3k</span>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
-                                        </div>
-                                        <div class="timeline-comment-box">
-                                            <div class="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"></div>
-                                            <div class="input">
-                                                <form action="">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">
-                                                        <span class="input-group-btn p-l-10">
-                                          <button class="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>
-                                          </span>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end timeline-body -->
-                                </li>
-                                <li>
-                                    <!-- begin timeline-time -->
-                                    <div class="timeline-time">
-                                        <span class="date">yesterday</span>
-                                        <span class="time">20:17</span>
-                                    </div>
-                                    <!-- end timeline-time -->
-                                    <!-- begin timeline-icon -->
-                                    <div class="timeline-icon">
-                                        <a href="javascript:;">&nbsp;</a>
-                                    </div>
-                                    <!-- end timeline-icon -->
-                                    <!-- begin timeline-body -->
-                                    <div class="timeline-body">
-                                        <div class="timeline-header">
-                                            <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></span>
-                                            <span class="username">Sean Ngu</span>
-                                            <span class="pull-right text-muted">82 Views</span>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <p>Location: United States</p>
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
-                                        </div>
-                                    </div>
-                                    <!-- end timeline-body -->
-                                </li>
-                                <li>
-                                    <!-- begin timeline-time -->
-                                    <div class="timeline-time">
-                                        <span class="date">24 February 2014</span>
-                                        <span class="time">08:17</span>
-                                    </div>
-                                    <!-- end timeline-time -->
-                                    <!-- begin timeline-icon -->
-                                    <div class="timeline-icon">
-                                        <a href="javascript:;">&nbsp;</a>
-                                    </div>
-                                    <!-- end timeline-icon -->
-                                    <!-- begin timeline-body -->
-                                    <div class="timeline-body">
-                                        <div class="timeline-header">
-                                            <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></span>
-                                            <span class="username">Sean Ngu</span>
-                                            <span class="pull-right text-muted">1,282 Views</span>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <p class="lead">
-                                                <i class="fa fa-quote-left fa-fw pull-left"></i>
-                                                Quisque sed varius nisl. Nulla facilisi. Phasellus consequat sapien sit amet nibh molestie placerat. Donec nulla quam, ullamcorper ut velit vitae, lobortis condimentum magna. Suspendisse mollis in sem vel mollis.
-                                                <i class="fa fa-quote-right fa-fw pull-right"></i>
-                                            </p>
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
-                                        </div>
-                                    </div>
-                                    <!-- end timeline-body -->
-                                </li>
-                                <li>
-                                    <!-- begin timeline-time -->
-                                    <div class="timeline-time">
-                                        <span class="date">10 January 2014</span>
-                                        <span class="time">20:43</span>
-                                    </div>
-                                    <!-- end timeline-time -->
-                                    <!-- begin timeline-icon -->
-                                    <div class="timeline-icon">
-                                        <a href="javascript:;">&nbsp;</a>
-                                    </div>
-                                    <!-- end timeline-icon -->
-                                    <!-- begin timeline-body -->
-                                    <div class="timeline-body">
-                                        <div class="timeline-header">
-                                            <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></span>
-                                            <span class="username">Sean Ngu</span>
-                                            <span class="pull-right text-muted">1,021,282 Views</span>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <h4 class="template-title">
-                                                <i class="fa fa-map-marker text-danger fa-fw"></i>
-                                                795 Folsom Ave, Suite 600 San Francisco, CA 94107
-                                            </h4>
-                                            <p>In hac habitasse platea dictumst. Pellentesque bibendum id sem nec faucibus. Maecenas molestie, augue vel accumsan rutrum, massa mi rutrum odio, id luctus mauris nibh ut leo.</p>
-                                            <p class="m-t-20">
-                                                <img src="../assets/img/gallery/gallery-5.jpg" alt="">
-                                            </p>
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
-                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
-                                        </div>
-                                    </div>
-                                    <!-- end timeline-body -->
-                                </li>
-                                <li>
-                                    <!-- begin timeline-icon -->
-                                    <div class="timeline-icon">
-                                        <a href="javascript:;">&nbsp;</a>
-                                    </div>
-                                    <!-- end timeline-icon -->
-                                    <!-- begin timeline-body -->
-                                    <div class="timeline-body">
-                                        Loading...
-                                    </div>
-                                    <!-- begin timeline-body -->
-                                </li>
-                            </ul>
-                            <!-- end timeline -->
+
+
+                <div class="add-publication mt-25">
+                    <div class="input-public">
+                        <div class="form-input">
+                            <form th:method="post" th:action="@{/account/createPublication}">
+                                <label for="fname">Add Publication</label>
+                                <input type="text" id="fname" name="message" placeholder="Text...">
+                                <input type="submit" value="Add">
+                            </form>
                         </div>
-                        <!-- end #profile-post tab -->
                     </div>
-                    <!-- end tab-content -->
                 </div>
-                <!-- end profile-content -->
+
+
+                <th:block th:each="publication : ${publications}">
+                    <div class="profile-content">
+                        <!-- begin tab-content -->
+                        <div class="tab-content p-0">
+                            <!-- begin #profile-post tab -->
+                            <div class="tab-pane fade active show" id="profile-post">
+                                <!-- begin timeline -->
+                                <ul class="timeline">
+                                    <span>
+                                        <!-- begin timeline-time -->
+                                        <div class="timeline-time">
+
+                                        </div>
+
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="userimage">   <img th:src="@{/img/banana.jpg}">  </span>
+                                                <span class="username"><a href="javascript:;"><span
+                                                        th:text="${user.getName()}"></span>
+                                                <span th:text="${user.getSurname()}"></span></a> <small></small></span>
+                                                <span class="pull-right text-muted">
+                                                    <form th:action="@{@{/account/deletePublication/__${publication.getId()}__}}"
+                                                          th:method="post">
+                                                        <button class="btn-delete" type="submit">Delete</button>
+                                                </form>
+                                                    </span>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <p>
+                                                   <span th:text="${publication.getMessage()}">..</span>
+                                                </p>
+                                                <p>
+                                                     <span th:text="${publication.getDate()}"></span>
+                                                </p>
+                                            </div>
+                                            <div class="timeline-likes">
+                                                <div class="stats-right">
+
+                                                </div>
+                                                <div class="stats">
+                                                    <span class="fa-stack fa-fw stats-icon"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                        <div class="timeline-footer">-->
+                    <!--                            &lt;!&ndash;                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>&ndash;&gt;-->
+                    <!--                            &lt;!&ndash;                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>&ndash;&gt;-->
+                    <!--                            &lt;!&ndash;                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>&ndash;&gt;-->
+                    <!--                        </div>-->
+                    <!--                                        <div class="timeline-comment-box">-->
+                    <!--                                           -->
+                    <!--                                            <div class="input">-->
+                    <!--                                                <form action="">-->
+                    <!--                                                    <div class="input-group">-->
+                    <!--&lt;!&ndash;                                                        <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                                        <span class="input-group-btn p-l-10">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                          <button class="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>&ndash;&gt;-->
+                    <!--                                          </span>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </form>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+
+                </th:block>  <!-- end timeline -->
             </div>
+            <!-- end #profile-post tab -->
         </div>
+        <!-- end tab-content -->
     </div>
+    <!-- end profile-content -->
 </div>
+</div>
+</div>
+</div>
+
+
+</th:block>
+
 
 </body>
 </html>

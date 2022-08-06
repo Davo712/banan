@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Chat</title>
+    <title>Banana Web Site</title>
     <link rel="stylesheet" th:href="@{/css/chat.css}" />
     <link rel="icon" type="image/png" th:href="@{/img/ban.jpg}" />
 
@@ -15,15 +15,19 @@
 
 <div id="username-page">
     <div class="username-page-container">
-        <h1 class="title">Start chat</h1>
+        <h1 class="title">Global chat</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
                 <input type=hidden th:value="${username}" id="name" placeholder="Username" autocomplete="off" class="form-control" />
             </div>
             <div class="form-group">
-                <button type="submit" class="accent username-submit">Start Chatting</button>
+                <button type="submit" class="accent username-submit">Start Chat</button>
             </div>
         </form>
+        <form th:method="get" th:action="@{/account}">
+            <button style="background: #56baed;" type="submit" class="accent username-submit">Account Page</button>
+        </form>
+
     </div>
 </div>
 
@@ -31,6 +35,9 @@
     <div class="chat-container">
         <div class="chat-header">
             <h2>Chat area</h2>
+            <form th:method="get" th:action="@{/account}">
+                <button style="background: #56baed;" type="submit" class="accent username-submit">Account Page</button>
+            </form>
         </div>
         <div class="connecting">
             Connecting...
@@ -47,9 +54,9 @@
             </div>
         </form>
     </div>
-    <form th:action="@{/account}" th:method="get" >
-        <button type="submit">My Page</button>
-    </form>
+<!--    <form th:action="@{/account}" th:method="get" >-->
+<!--        <button type="submit">My Page</button>-->
+<!--    </form>-->
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>

@@ -676,7 +676,7 @@
         .input-public {
             background-color: #ffffff;
             width: 50%;
-            height: 170px;
+            height: 203px;
             margin-left: 80px;
             border-radius: 6px;
         }
@@ -774,17 +774,17 @@
                         <ul class="profile-header-tab nav nav-tabs">
                             <li class="nav-item"><a
                                     th:href="@{/account/getPublications/my}"
-                                     class="nav-link_ active"><i class="fa fa-bars" aria-hidden="true"></i> POSTS</a></li>
+                                    class="nav-item"><i class="fa fa-bars" aria-hidden="true"></i> POSTS</a></li>
                             <li class="nav-item"><a  th:href="@{/account/getSongs/my}"
-                                                     class="nav-link_"><i class="fa fa-music" aria-hidden="true"></i> SONGS</a></li>
+                                                             class="nav-link_"><i class="fa fa-music" aria-hidden="true"></i> SONGS</a></li>
                             <li class="nav-item"><a  th:href="@{/account/getImages/my}"
                                                      class="nav-link_"><i class="fa fa-photo" aria-hidden="true"></i> PHOTOS</a></li>
                             <li class="nav-item"><a  th:href="@{/account/getFriends/my}"
                                                      class="nav-link_"><i class="fa fa-users" aria-hidden="true"></i> FRIENDS</a></li>
                             <li class="nav-item"><a  th:href="@{/account/getFriendRequests}"
                                                      class="nav-link_"><i class="fa fa-user-plus" aria-hidden="true"></i> FRIEND REQUESTS</a></li>
-                            <li class="nav-item"><a  th:href="@{/account/getSearchUser}"
-                                                    class="nav-link_">&#128269; SEARCH USER</a></li>
+                            <li class="nav-link_ active"><a  th:href="@{/account/getSearchUser}"
+                                                     class="nav-link_">&#128269; SEARCH USER</a></li>
                             <li class="nav-item"><a  th:href="@{/account/chat}"
                                                      class="nav-link_"><i class="fa fa-envelope" aria-hidden="true"></i> GLOBAL CHAT</a></li>
 
@@ -799,65 +799,61 @@
                 <div class="add-publication mt-25">
                     <div class="input-public">
                         <div class="form-input">
-                            <form th:method="post" th:action="@{/account/createPublication}">
-                                <label for="fname">Add Publication</label>
-                                <input type="text" id="fname" name="message" placeholder="Text...">
-                                <input type="submit" value="Add">
+                            <form id="center" method="get"
+                                  th:action="@{/account/searchUser}">
+                                <label>Search User</label>
+                                <p></p>
+                                <input type="text" id="fname" name="username" placeholder="Username (email)">
+                                <input type="submit" value="Search">
                             </form>
                         </div>
                     </div>
                 </div>
 
 
-                <th:block th:each="publication : ${publications}">
-                    <div class="profile-content">
-                        <!-- begin tab-content -->
-                        <div class="tab-content p-0">
-                            <!-- begin #profile-post tab -->
-                            <div class="tab-pane fade active show" id="profile-post">
-                                <!-- begin timeline -->
-                                <ul class="timeline">
-                                    <span>
-                                        <!-- begin timeline-time -->
-                                        <div class="timeline-time">
+<!--                <th:block th:each="n : ${null}">-->
+<!--                    <div class="profile-content">-->
+<!--                        &lt;!&ndash; begin tab-content &ndash;&gt;-->
+<!--                        <div class="tab-content p-0">-->
+<!--                            &lt;!&ndash; begin #profile-post tab &ndash;&gt;-->
+<!--                            <div class="tab-pane fade active show" id="profile-post">-->
+<!--                                &lt;!&ndash; begin timeline &ndash;&gt;-->
+<!--                                <ul class="timeline">-->
+<!--                                    <span>-->
+<!--                                        &lt;!&ndash; begin timeline-time &ndash;&gt;-->
+<!--                                        <div class="timeline-time">-->
 
-                                        </div>
+<!--                                        </div>-->
 
-                                        <div class="timeline-body">
-                                            <div class="timeline-header">
-                                                <span class="userimage">   <img th:src="@{/img/banana.jpg}">  </span>
-                                                <span class="username"><a href="javascript:;"><span
-                                                        th:text="${user.getName()}"></span>
-                                                <span th:text="${user.getSurname()}"></span></a> <small></small></span>
-                                                <span class="pull-right text-muted">
-                                                    <form th:action="@{@{/account/deletePublication/__${publication.getId()}__}}"
-                                                          th:method="post">
-                                                        <button class="btn-delete" type="submit">Delete</button>
-                                                </form>
-                                                    </span>
-                                            </div>
-                                            <div class="timeline-content">
-                                                <p>
-                                                   <span th:text="${publication.getMessage()}">..</span>
-                                                </p>
-                                                <p>
-                                                     <span th:text="${publication.getDate()}"></span>
-                                                </p>
-                                            </div>
-                                            <div class="timeline-likes">
-                                                <div class="stats-right">
+<!--                                        <div class="timeline-body">-->
+<!--                                            <div class="timeline-header">-->
 
-                                                </div>
-                                                <div class="stats">
-                                                    <span class="fa-stack fa-fw stats-icon"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </span>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+<!--                                               -->
+<!--                                            </div>-->
+<!--                                            <div class="timeline-content">-->
+<!--                                                <p>-->
+
+<!--                                                <br>-->
+
+<!--                                                </p>-->
+<!--                                                <p>-->
+
+<!--                                                </p>-->
+<!--                                            </div>-->
+<!--                                            <div class="timeline-likes">-->
+<!--                                                <div class="stats-right">-->
+
+<!--                                                </div>-->
+<!--                                                <div class="stats">-->
+<!--                                                    <span class="fa-stack fa-fw stats-icon"></span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </span>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <!--                        <div class="timeline-footer">-->
                     <!--                            &lt;!&ndash;                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>&ndash;&gt;-->
                     <!--                            &lt;!&ndash;                                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>&ndash;&gt;-->
@@ -895,3 +891,5 @@
 
 </body>
 </html>
+
+

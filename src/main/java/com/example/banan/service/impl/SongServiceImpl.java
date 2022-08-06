@@ -29,7 +29,7 @@ public class SongServiceImpl implements SongService {
     public boolean addSong(MultipartFile f, String username,String nameByUser) throws IOException {
         Song song = new Song();
         song.setName(RandomStringUtils.randomAlphabetic(15) + ".mp3");
-        song.setLink("C:\\Users\\User\\Desktop\\MusicsForBanan\\" + song.getName());
+        song.setLink("C:\\Users\\User\\Desktop\\MusicsForBanana\\" + song.getName());
         song.setNameByUser(nameByUser);
         User user = userRepository.findByUsername(username);
         List<Song> songs = user.getSongs();

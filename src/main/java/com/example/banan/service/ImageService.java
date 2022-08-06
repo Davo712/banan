@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface ImageService {
 
-    boolean addImage(MultipartFile f, String username) throws IOException;
+    boolean addImage(MultipartFile f, String username,String nameByUser) throws IOException;
     List<Image> getImages(String username) throws IOException;
     void deleteImage(String name,String username);
 }

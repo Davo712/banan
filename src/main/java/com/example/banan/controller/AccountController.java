@@ -80,6 +80,11 @@ public class AccountController {
         return "changePassword";
     }
 
+    @GetMapping("/getSearchUser")
+    public String getSearchUser() {
+        return "searchUser";
+    }
+
     @GetMapping("/searchUser/{username}")
     public String searchUser(Model model, @PathVariable String username, Principal principal) {
         if (username.equals(principal.getName())) {
@@ -89,7 +94,7 @@ public class AccountController {
         User user = userService.searchUser(username);
         if (user == null || !user.isActive()) {
             model.addAttribute("message", USER_NOT_FOUND);
-            return "account";
+            return "searchUser";
         }
         model.addAttribute("user1", user);
 
@@ -227,14 +232,14 @@ public class AccountController {
 
 
     @PostMapping("/addImage")
-    public String addImage(@RequestParam("f") MultipartFile f, Model model, Principal principal) throws IOException {
+    public String addImage(@RequestParam("f") MultipartFile f, Model model, Principal principal,String nameByUser) throws IOException {
 
         if (f.getOriginalFilename().equals("")) {
             return "account";
         }
-        if (imageService.addImage(f, principal.getName())) {
+        if (imageService.addImage(f, principal.getName(),nameByUser)) {
             model.addAttribute("message", IMAGE_ADDED);
-            return "account";
+            return "redirect:/account/getImages/my";
         } else {
             model.addAttribute("message", ERROR);
         }

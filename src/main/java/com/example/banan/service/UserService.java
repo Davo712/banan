@@ -12,7 +12,7 @@ public interface UserService {
     boolean forgotPassword(String username);
     boolean forgotPassword1(String code,String newPassword,String newPassword1);
     User searchUser(String username);
-    boolean addFreindRequest(String username1,String username2);
+    boolean addFriendRequest(String username1,String username2);
     boolean acceptFriend(String username1,String username2);
     boolean declineFriend(String username1, String username2);
     void deleteFriend(String username, String usernameFriend);

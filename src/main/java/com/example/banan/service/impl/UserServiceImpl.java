@@ -137,7 +137,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public boolean addFreindRequest(String username1,String username2) {
+    public boolean addFriendRequest(String username1,String username2) {
         User user = userRepository.findByUsername(username1);
         User user1 = userRepository.findByUsername(username2);
         List<String> l = user.getFriendUsernames();

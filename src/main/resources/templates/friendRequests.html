@@ -504,7 +504,7 @@
             margin-right: 17%;
             background: #fff;
             position: relative;
-            padding: 20px 25px;
+            padding: 31px 25px;
             border-radius: 6px
         }
 
@@ -530,7 +530,7 @@
 
         .timeline-header {
             padding-bottom: 10px;
-            border-bottom: 1px solid #e2e7eb;
+            border-bottom: 0px solid #e2e7eb;
             line-height: 30px
         }
 
@@ -676,7 +676,7 @@
         .input-public {
             background-color: #ffffff;
             width: 50%;
-            height: 203px;
+            height: 170px;
             margin-left: 80px;
             border-radius: 6px;
         }
@@ -747,7 +747,8 @@
                             <div class="profile-header-info">
                                 <h4 class="m-t-10 m-b-5"><span th:text="${user.getName()}"
                                                                style="color: #0d0d0d; font-size: 30px"></span>
-                                    <span  th:text="${user.getSurname()}" style="color: #0d0d0d; font-size: 30px"></span></h4>
+                                    <span th:text="${user.getSurname()}" style="color: #0d0d0d; font-size: 30px"></span>
+                                </h4>
                                 <p class="m-b-10"><span th:text="${user.getUsername()}" style="color: #0d0d0d"></span>
                                 </p>
                                 <p class="m-b-10"><span th:text="${user.getBalance()}" style="color: #0d0d0d"></span>
@@ -775,18 +776,18 @@
                             <li class="nav-item"><a
                                     th:href="@{/account/getPublications/my}"
                                     class="nav-item">POSTS</a></li>
-                            <li class="nav-link_ active"><a th:href="@{/account/getSongs/my}"
-                                                            class="nav-link_">SONGS</a></li>
+                            <li class="nav-item"><a th:href="@{/account/getSongs/my}"
+                                                    class="nav-link_">SONGS</a></li>
                             <li class="nav-item"><a th:href="@{/account/getImages/my}"
                                                     class="nav-link_">PHOTOS</a></li>
                             <li class="nav-item"><a th:href="@{/account/getFriends/my}"
                                                     class="nav-link_">FRIENDS</a></li>
-                            <li class="nav-item"><a th:href="@{/account/getFriendRequests}"
-                                                    class="nav-link_">FRIEND REQUESTS</a></li>
+                            <li class="nav-link_ active"><a th:href="@{/account/getFriendRequests}"
+                                                            class="nav-link_">FRIEND REQUESTS</a></li>
                             <li class="nav-item"><a th:href="@{/account/getSearchUser}"
                                                     class="nav-link_">SEARCH USER</a></li>
-                            <li class="nav-item"><a  th:href="@{/account/chat}"
-                                                     class="nav-link_">GLOBAL CHAT</a></li>
+                            <li class="nav-item"><a th:href="@{/account/chat}"
+                                                    class="nav-link_">GLOBAL CHAT</a></li>
 
                         </ul>
                         <!-- END profile-header-tab -->
@@ -796,23 +797,7 @@
                 <!-- begin profile-content -->
 
 
-                <div class="add-publication mt-25">
-                    <div class="input-public">
-                        <div class="form-input">
-                            <form id="center" enctype="multipart/form-data" method="post"
-                                  th:action="@{/account/addSong}">
-                                <label>Add Song</label>
-                                <p></p>
-                                <input type="file" name="f">
-                                <input type="text" id="fname" name="nameByUser" placeholder="Song Name">
-                                <input type="submit" value="Add">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
-                <th:block th:each="song : ${songs}">
+                <th:block th:each="f : ${friendRequests}">
                     <div class="profile-content">
                         <!-- begin tab-content -->
                         <div class="tab-content p-0">
@@ -822,49 +807,43 @@
                                 <ul class="timeline">
                                     <span>
                                         <!-- begin timeline-time -->
-                                        <div class="timeline-time">
+<!--                                        <div class="timeline-time">-->
 
-                                        </div>
+<!--                                        </div>-->
 
                                         <div class="timeline-body">
                                             <div class="timeline-header">
                                                 <span class="userimage">   <img th:src="@{/img/banana.jpg}">  </span>
                                                 <span class="username"><a href="javascript:;"><span
-                                                        th:text="${user.getName()}"></span>
-                                                <span th:text="${user.getSurname()}"></span></a> <small></small></span>
+                                                        th:text="${f.getName()}"></span>
+                                                <span th:text="${f.getSurname()}"></span></a> <small></small></span>
                                                 <span class="pull-right text-muted">
-                                                    <form method="post" th:action="@{@{/account/deleteSong/__${song.getName}__}}">
-                                                        <button class="btn-delete" type="submit">Delete</button>
-                                                </form>
+                                                     <form th:action="@{@{/account/acceptFriend/__${f.getUsername()}__}}"
+                                                           th:method="post">
+                                                        <button class="btn-delete" type="submit">Accept</button>
+                                                    </form>
+                                                    <form th:action="@{@{/account/declineFriend/__${f.getUsername()}__}}"
+                                                          th:method="post">
+                                                        <button style="background: red" class="btn-delete" type="submit">Decline</button>
+                                                    </form>
                                                     </span>
                                             </div>
-                                            <div class="timeline-content">
-                                                <p>
-                                                    <figure>
-                                                    <figcaption><span style="font-family: 'Arial LatArm';font-size: medium" th:text="${song.getNameByUser}">
-                                                    </span>
-                                                    </figcaption>
-                                                <br>
-                                                     <audio
-                                                             controls
-                                                             th:src="@{@{/mp3/__${song.getName}__}}">
-                                                           Your browser does not support the
-                                                       <code>audio</code> element.
-                                                       </audio>
-                                                      </figure>
-                                                </p>
-                                                <p>
+                                            <!--                                            <div class="timeline-content">-->
+                                            <!--                                                <p>-->
+                                            <!--                                                   <span th:text="${publication.getMessage()}">..</span>-->
+                                            <!--                                                </p>-->
+                                            <!--                                                <p>-->
+                                            <!--                                                     <span th:text="${publication.getDate()}"></span>-->
+                                            <!--                                                </p>-->
+                                            <!--                                            </div>-->
+<!--                                            <div class="timeline-likes">-->
+<!--                                                <div class="stats-right">-->
 
-                                                </p>
-                                            </div>
-                                            <div class="timeline-likes">
-                                                <div class="stats-right">
-
-                                                </div>
-                                                <div class="stats">
-                                                    <span class="fa-stack fa-fw stats-icon"></span>
-                                                </div>
-                                            </div>
+<!--                                                </div>-->
+<!--                                                <div class="stats">-->
+<!--                                                    <span class="fa-stack fa-fw stats-icon"></span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
                                         </div>
                                     </span>
                                 </ul>
@@ -908,5 +887,3 @@
 
 </body>
 </html>
-
-

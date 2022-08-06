@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.*;
+import java.util.function.Consumer;
 
 @Controller
 @RequestMapping("/account")
@@ -101,12 +102,21 @@ public class AccountController {
         return "redirect:/account/searchUser/" + username;
     }
 
+    @GetMapping("/getFriends/my")
+    public String getFriends() {
+        return "myFriends";
+    }
+
+    @GetMapping("/getFriendRequests")
+    public String getFriendRequests() {
+        return "friendRequests";
+    }
     @PostMapping("/addFriend/{username}")
     public String addFriend(@PathVariable String username, Model model, Principal principal) {
         if (username.equals(principal.getName())) {
             return "account";
         }
-        if (userService.addFreindRequest(username, principal.getName())) {
+        if (userService.addFriendRequest(username, principal.getName())) {
             model.addAttribute("message", FRIEND_RQ_SENT);
             return "account";
         }
@@ -117,20 +127,20 @@ public class AccountController {
     @PostMapping("/acceptFriend/{username}")
     public String acceptFriend(@PathVariable String username, Principal principal, Model model) {
         userService.acceptFriend(username, principal.getName());
-        return "redirect:/account";
+        return "redirect:/account/getFriendRequests";
     }
 
     @PostMapping("/declineFriend/{username}")
     public String declineFriend(@PathVariable String username, Principal principal, Model model) {
         userService.declineFriend(principal.getName(), username);
-        return "redirect:/account";
+        return "redirect:/account/getFriendRequests";
     }
 
 
-    @GetMapping("/deleteFriend/{username}")
+    @PostMapping("/deleteFriend/{username}")
     public String deleteFriend(@PathVariable String username, Principal principal) {
         userService.deleteFriend(principal.getName(), username);
-        return "account";
+        return "redirect:/account/getFriends/my";
     }
 
     @PostMapping("/createPublication")
@@ -278,22 +288,30 @@ public class AccountController {
     }
 
     @ModelAttribute("friendRequests")
-    public List<String> atribute2() {
+    public List<User> attribute2() {
         if (globalUser.getFriendRequests() != null) {
-            return globalUser.getFriendRequests();
+            List<User> friendRequests = new ArrayList<>();
+            globalUser.getFriendRequests().forEach(s -> {
+                friendRequests.add(userRepository.findByUsername(s));
+            });
+            return friendRequests;
         }
         return new ArrayList<>();
     }
 
-    @ModelAttribute("friendUsernames")
-    public List<String> atribute3() {
+    @ModelAttribute("friends")
+    public List<User> attribute3() {
         if (globalUser.getFriendUsernames() != null) {
-            return globalUser.getFriendUsernames();
+            List<User> friends = new ArrayList<>();
+            globalUser.getFriendUsernames().forEach(s -> {
+                friends.add(userRepository.findByUsername(s));
+            });
+            return friends;
         }
         return new ArrayList<>();
     }
     @ModelAttribute("publications")
-    public List<Publication> atribute4() {
+    public List<Publication> attribute4() {
         List<Publication> publications = globalUser.getPublications();
         publications.sort((o1, o2) -> o2.getDate().compareTo(o1.getDate()));
        return publications;

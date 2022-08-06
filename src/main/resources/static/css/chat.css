@@ -17,7 +17,7 @@ body {
     font-size: 1rem;
     line-height: 1.58;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #f8f304;
     height: 100%;
 }
 
@@ -27,7 +27,7 @@ body:before {
     position: absolute;
     top: 0;
     left: 0;
-    background: #128ff2;
+    background: #f8f304;
     content: "";
     z-index: 0;
 }
@@ -93,7 +93,7 @@ button.default {
 }
 
 button.primary {
-    background-color: #128ff2;
+    background-color: #56baed;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
@@ -161,7 +161,7 @@ button.accent {
 }
 
 #chat-page #messageForm {
-    padding: 20px;
+    padding: 3px;
 }
 
 #chat-page ul li {

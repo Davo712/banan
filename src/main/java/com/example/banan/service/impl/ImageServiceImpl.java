@@ -27,12 +27,14 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     public UtilService utilService;
 
+    private final String IMAGE_LINK = "C:\\Users\\Davit.gevorgyan\\Desktop\\ImagesForBanana\\";
+
     @Override
     public boolean addImage(MultipartFile f, String username,String nameByUser) throws IOException {
 
         Image image = new Image();
         image.setName(RandomStringUtils.randomAlphabetic(20) + ".jpg");
-        image.setLink("C:\\Users\\User\\Desktop\\ImagesForBanana\\" + image.getName());
+        image.setLink(IMAGE_LINK + image.getName());
         image.setNameByUser(nameByUser);
         User user = userRepository.findByUsername(username);
         List<Image> images = user.getImages();

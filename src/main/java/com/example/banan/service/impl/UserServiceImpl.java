@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-
         User user1 = userRepository.findByUsername(user.getUsername());
         if (user1 != null) {
             return false;
@@ -53,19 +52,14 @@ public class UserServiceImpl implements UserService {
             user.setActivationCode(UUID.randomUUID().toString());
         }
         userRepository.save(user);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SimpleMailMessage message = new SimpleMailMessage();
-                message.setTo(user.getUsername());
-                message.setSubject("Activate account");
-                String message1 = String.format("Please visit next link for account activation:  http://localhost:8080/activate/%s", user.getActivationCode());
-                message.setText(message1);
-                emailSender.send(message);
-            }
+        new Thread(() -> {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(user.getUsername());
+            message.setSubject("Activate account");
+            String message1 = String.format("Please visit next link for account activation:  http://localhost:8080/activate/%s", user.getActivationCode());
+            message.setText(message1);
+            emailSender.send(message);
         }).start();
-
         return true;
 
     }

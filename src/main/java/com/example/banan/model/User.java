@@ -39,6 +39,7 @@ public class User {
     private boolean active;
     private String activationCode;
     private long balance;
+    @Enumerated(EnumType.STRING)
     private Role role;
     @ElementCollection
     private List<String> friendRequests;

@@ -1,21 +1,16 @@
 package com.example.banan.service.impl;
 
-import com.example.banan.controller.MainController;
 import com.example.banan.model.Publication;
 import com.example.banan.model.Role;
 import com.example.banan.model.User;
 import com.example.banan.repository.PublicationRepository;
 import com.example.banan.repository.UserRepository;
 import com.example.banan.service.UserService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -91,17 +86,14 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return false;
         }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SimpleMailMessage message = new SimpleMailMessage();
-                message.setTo(user.getUsername());
-                message.setSubject("Forgot Password");
-                String message1 = String.format("Please visit next link for change password:  http://localhost:8080/forgotPassword1/%s",user.getActivationCode());
-                System.out.println(message1);
-                message.setText(message1);
-                emailSender.send(message);
-            }
+        new Thread(() -> {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(user.getUsername());
+            message.setSubject("Forgot Password");
+            String message1 = String.format("Please visit next link for change password:  http://localhost:8080/forgotPassword1/%s",user.getActivationCode());
+            System.out.println(message1);
+            message.setText(message1);
+            emailSender.send(message);
         }).start();
 
         return true;
@@ -175,8 +167,6 @@ public class UserServiceImpl implements UserService {
         list1.add(user.getUsername());
         user1.setFriendUsernames(list1);
         userRepository.save(user1);
-
-
         return true;
     }
 

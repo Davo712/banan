@@ -123,7 +123,7 @@ public class AccountController {
         }
         if (userService.addFriendRequest(username, principal.getName())) {
             model.addAttribute("message", FRIEND_RQ_SENT);
-            return "account";
+            return "redirect:/account/searchUser/" + username;
         }
         model.addAttribute("message", ERROR);
         return "account";
